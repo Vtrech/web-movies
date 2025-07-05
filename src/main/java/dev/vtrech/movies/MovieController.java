@@ -18,9 +18,18 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+//    @GetMapping
+//    public ResponseEntity<List<Movie>> getAllMovies(){
+//        return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
+//    }
     @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies(){
-        return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        List<Movie> movies = movieService.allMovies();
+        System.out.println("Dữ liệu từ service: " + movies);
+        if (movies.isEmpty()) {
+            System.out.println("Danh sách rỗng!");
+        }
+        return new ResponseEntity<List<Movie>>(movies, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

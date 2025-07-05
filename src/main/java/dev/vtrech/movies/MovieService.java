@@ -11,8 +11,13 @@ import java.util.Optional;
 public class MovieService {
     @Autowired
     private  MovieRepository movieRepository;
-    public List<Movie> allMovies(){
-        return movieRepository.findAll();
+//    public List<Movie> allMovies(){
+//        return movieRepository.findAll();
+//    }
+    public List<Movie> allMovies() {
+        List<Movie> movies = movieRepository.findAll();
+        System.out.println("Số lượng phim: " + movies.size());
+        return movies;
     }
 
     public Optional<Movie> singleMovie(ObjectId id){
